@@ -44,7 +44,7 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
-                .httpBasic(Customizer.withDefaults()) //if you want to access RBA then we need to pass Basic Auth everytime
+                .httpBasic(Customizer.withDefaults()) // Enable HTTP Basic Auth, otherwise we can't access RBAC endpoints
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
