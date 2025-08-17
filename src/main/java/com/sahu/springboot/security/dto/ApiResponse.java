@@ -2,15 +2,21 @@ package com.sahu.springboot.security.dto;
 
 import com.sahu.springboot.security.constant.AuthConstants;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApiResponse<T> {
-    private final LocalDateTime timestamp = LocalDateTime.now();
+    private final String timestamp = LocalDateTime.now()
+            .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     private Integer code;
     private String status;
     private String message;

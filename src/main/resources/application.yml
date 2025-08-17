@@ -35,3 +35,10 @@ logging:
   level:
     #org.springframework.security: DEBUG
     com.sahu.springboot.security: DEBUG
+
+# Swagger Configuration
+springdoc:
+  swagger-ui:
+      path: /documentation
+  api-docs:
+    path: /api-docs

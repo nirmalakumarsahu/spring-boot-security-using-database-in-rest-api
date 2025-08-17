@@ -46,6 +46,7 @@ public class AuthRestController {
                             .userId(userDetails.getUserId())
                             .username(userDetails.getUsername())
                             .email(userDetails.getEmail())
+                            .roles(userDetails.getUserRoles())
                             .build(),
                     httpServletRequest.getRequestURI()));
         }
@@ -80,7 +81,6 @@ public class AuthRestController {
                             .userId(user.getId())
                             .username(user.getUsername())
                             .email(user.getEmail())
-                            .roles(user.getRoles().stream().map(Role::getName).toList())
                             .build(),
                     request.getRequestURI()));
 
