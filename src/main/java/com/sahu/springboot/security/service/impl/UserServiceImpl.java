@@ -1,7 +1,7 @@
 package com.sahu.springboot.security.service.impl;
 
 import com.sahu.springboot.security.constant.AuthConstants;
-import com.sahu.springboot.security.dto.UserRequestDTO;
+import com.sahu.springboot.security.dto.UserRequest;
 import com.sahu.springboot.security.model.User;
 import com.sahu.springboot.security.repository.RoleRepository;
 import com.sahu.springboot.security.repository.UserRepository;
@@ -32,9 +32,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User addUser(UserRequestDTO userRequestDTO) {
+    public User addUser(UserRequest userRequest) {
         User user = new User();
-        BeanUtils.copyProperties(userRequestDTO, user);
+        BeanUtils.copyProperties(userRequest, user);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Set.of(roleRepository.findByName(AuthConstants.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("Role not found: USER"))));
