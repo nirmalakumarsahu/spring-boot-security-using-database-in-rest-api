@@ -38,7 +38,6 @@ public class OpenApiConfig {
                 .components(new Components()
                         .addSecuritySchemes(openApiProperties.getSecuritySchemeName(),
                                 new SecurityScheme()
-                                        .name(openApiProperties.getSecuritySchemeName())
                                         .type(SecurityScheme.Type.HTTP)
                                         .scheme(openApiProperties.getScheme())
                         )
