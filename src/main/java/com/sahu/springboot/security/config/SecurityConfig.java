@@ -18,8 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfiguration {
-
+public class SecurityConfig {
 
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
@@ -37,8 +36,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(AuthConstants.LOGIN_URL, AuthConstants.REGISTRATION_URL).permitAll()
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/documentation/**",
-                                "/api-docs/**").permitAll()
+                        .requestMatchers(AuthConstants.SWAGGER_WHITELIST).permitAll()
                         .requestMatchers(AuthConstants.ADMIN_DASHBOARD_URL).hasRole(AuthConstants.ROLE_ADMIN)
                         .requestMatchers(AuthConstants.USER_DASHBOARD_URL).hasRole(AuthConstants.ROLE_USER)
                         .anyRequest().authenticated()

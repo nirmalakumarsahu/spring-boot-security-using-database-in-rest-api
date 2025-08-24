@@ -39,6 +39,25 @@ logging:
 # Swagger Configuration
 springdoc:
   swagger-ui:
-      path: /documentation
+    path: /documentation
+    enabled: true
   api-docs:
     path: /api-docs
+    enabled: true
+
+openapi:
+  title: 🚀 Spring Boot Security using Database
+  description: Spring Boot Security Authentication and Authorization
+  version: 1.0.0
+  contact:
+    name: Nirmala Sahu
+    email: nirmalakumarsahu7@gmail.com
+    url: https://nirmalakumarsahu.in
+  servers:
+    - name: dev
+      url: http://localhost:9897
+      description: Local Development URL
+  security-scheme-name: basicAuth
+  scheme: basic
+
+
