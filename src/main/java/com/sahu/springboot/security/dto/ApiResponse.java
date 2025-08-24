@@ -1,5 +1,6 @@
 package com.sahu.springboot.security.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sahu.springboot.security.constant.AuthConstants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
     private final String timestamp = LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
