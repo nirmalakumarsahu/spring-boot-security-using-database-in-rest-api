@@ -28,7 +28,6 @@ public class OpenApiProperties {
         private String url;
     }
 
-
     @Getter
     @Setter
     public static class Server {
