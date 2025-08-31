@@ -5,7 +5,6 @@ import com.sahu.springboot.security.model.User;
 import com.sahu.springboot.security.security.dto.CustomUserDetails;
 import com.sahu.springboot.security.security.util.SecurityUtil;
 import com.sahu.springboot.security.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -31,7 +30,7 @@ public class AuthRestController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<LoginResponse>> login(@RequestBody LoginRequest loginRequest, HttpServletRequest httpServletRequest) {
+    public ResponseEntity<ApiResponse<LoginResponse>> login(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.username(), loginRequest.password()));
 
@@ -45,30 +44,30 @@ public class AuthRestController {
                             .username(userDetails.getUsername())
                             .email(userDetails.getEmail())
                             .roles(userDetails.getUserRoles())
-                            .build(),
-                    httpServletRequest.getRequestURI()));
+                            .build())
+            );
         }
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ApiResponse.failure(HttpStatus.UNAUTHORIZED, "Invalid username or password",
-                null,
-                httpServletRequest.getRequestURI()));
+                null)
+        );
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<?>> register(@RequestBody UserRequest userRequest, HttpServletRequest httpServletRequest) {
+    public ResponseEntity<ApiResponse<?>> register(@RequestBody UserRequest userRequest) {
         log.debug("Registration process started for user: {}", userRequest.username());
 
         //Check if the user already exists
         if (userService.existsByUsername(userRequest.username())) {
             return ResponseEntity.badRequest().body(ApiResponse.failure(HttpStatus.CONFLICT, "Username already exists",
-                    null,
-                    httpServletRequest.getRequestURI()));
+                    null)
+            );
         }
 
         if (userService.existsByEmail(userRequest.email())) {
             return ResponseEntity.badRequest().body(ApiResponse.failure(HttpStatus.CONFLICT, "Email already exists",
-                    null,
-                    httpServletRequest.getRequestURI()));
+                    null)
+            );
         }
 
         //Add the user
@@ -79,14 +78,13 @@ public class AuthRestController {
                             .userId(user.getId())
                             .username(user.getUsername())
                             .email(user.getEmail())
-                            .build(),
-                    httpServletRequest.getRequestURI()));
-
+                            .build())
+            );
         }
 
         return ResponseEntity.badRequest().body(ApiResponse.failure(HttpStatus.BAD_REQUEST, "Registration failed. Please try again.",
-                null,
-                httpServletRequest.getRequestURI()));
+                null)
+        );
     }
 
 }
