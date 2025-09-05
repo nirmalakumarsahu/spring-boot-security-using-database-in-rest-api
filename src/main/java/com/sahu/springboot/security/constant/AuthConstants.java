@@ -13,10 +13,6 @@ public class AuthConstants {
     public final String ROLE_ADMIN = "ADMIN";
     public final String ROLE_PREFIX = "ROLE_";
 
-    public final String STATUS_SUCCESS = "success";
-    public final String STATUS_FAILURE = "failure";
-    public final String STATUS_ERROR = "error";
-
     public final String[] SWAGGER_WHITELIST = {
             "/v3/api-docs/**", "/swagger-ui/**", "/documentation/**", "/api-docs/**"
     };
