@@ -1,7 +1,6 @@
 package com.sahu.springboot.security.controller.rest;
 
 import com.sahu.springboot.security.dto.*;
-import com.sahu.springboot.security.model.User;
 import com.sahu.springboot.security.security.dto.CustomUserDetails;
 import com.sahu.springboot.security.security.util.SecurityUtil;
 import com.sahu.springboot.security.service.UserService;
@@ -68,14 +67,9 @@ public class AuthRestController {
         }
 
         //Add the user
-        User user = userService.addUser(userRequest);
-        if (Objects.nonNull(user)) {
-            return ApiResponse.success(HttpStatus.CREATED, "Registration successful!",
-                    UserResponse.builder()
-                            .userId(user.getId())
-                            .username(user.getUsername())
-                            .email(user.getEmail())
-                            .build());
+        UserResponse userResponse = userService.createUser(userRequest);
+        if (Objects.nonNull(userResponse)) {
+            return ApiResponse.success(HttpStatus.CREATED, "Registration successful!", userResponse);
         }
 
         return ApiResponse.failure(HttpStatus.BAD_REQUEST, "Registration failed. Please try again.",
