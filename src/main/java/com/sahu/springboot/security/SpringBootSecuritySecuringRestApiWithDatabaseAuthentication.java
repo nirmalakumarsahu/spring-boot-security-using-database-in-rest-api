@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootSecurityUsingDatabaseInRestApiApplication {
+public class SpringBootSecuritySecuringRestApiWithDatabaseAuthentication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootSecurityUsingDatabaseInRestApiApplication.class, args);
+		SpringApplication.run(SpringBootSecuritySecuringRestApiWithDatabaseAuthentication.class, args);
 	}
 
 }

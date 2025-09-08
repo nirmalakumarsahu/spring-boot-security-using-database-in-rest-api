@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>com.sahu.spring-boot-security</groupId>
-    <artifactId>spring-boot-security-using-database-in-rest-api</artifactId>
+    <artifactId>spring-boot-security-securing-rest-api-with-database-authentication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-security-using-database-in-rest-api</name>
-    <description>spring-boot-security-using-database-in-rest-api</description>
+    <name>spring-boot-security-securing-rest-api-with-database-authentication</name>
+    <description>spring-boot-security-securing-rest-api-with-database-authentication</description>
     <url>https://example.comm</url>
 
     <properties>
